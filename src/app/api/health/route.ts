@@ -1,5 +1,7 @@
 import { openDatabase } from "@/lib/sqlite";
 
+export const runtime = "nodejs";
+
 export function GET() {
   const db = openDatabase(":memory:");
   try {

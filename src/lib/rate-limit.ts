@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Database from "better-sqlite3";
+import { resolveDataDir } from "./data-dir";
 
 /**
  * Free-tier ceilings for openai/gpt-oss-120b.
@@ -87,11 +88,6 @@ export type LlmLimiterOptions = {
   limits?: GroqLimits;
 };
 
-function defaultDataDir(): string {
-  const configured = process.env.DATA_DIR?.trim();
-  return configured ? configured : "./data";
-}
-
 function emptyUsage(): UsageRow {
   return {
     requests: 0,
@@ -167,7 +163,7 @@ function headerNumber(headers: HeaderSource | undefined, name: string): number |
 
 function openUsageDatabase(dbPath: string): Database.Database {
   if (dbPath !== ":memory:") {
-    fs.mkdirSync(path.dirname(path.resolve(dbPath)), { recursive: true });
+    fs.mkdirSync(path.dirname(path.resolve(/*turbopackIgnore: true*/ dbPath)), { recursive: true });
   }
   const db = new Database(dbPath);
   if (dbPath !== ":memory:") {
@@ -233,7 +229,7 @@ export function createLlmLimiter(options: LlmLimiterOptions = {}): LlmLimiter {
   const limits = options.limits ?? GROQ_MODEL_LIMITS;
   const now = options.now ?? (() => Date.now());
   const sleep = options.sleep ?? ((ms: number) => new Promise((resolve) => setTimeout(resolve, ms)));
-  const dbPath = options.dbPath ?? path.join(defaultDataDir(), "llm-usage.db");
+  const dbPath = options.dbPath ?? path.join(resolveDataDir(), "llm-usage.db");
   const db = openUsageDatabase(dbPath);
 
   const usageStmt = db.prepare(`

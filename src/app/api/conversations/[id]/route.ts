@@ -1,6 +1,8 @@
 import { getConversation, listMessages, type StoredMessage } from "@/lib/store";
 import type { AssistantMessage, ConversationResponse, UserMessage } from "@/lib/types";
 
+export const runtime = "nodejs";
+
 const NOT_FOUND_MESSAGE = "That conversation does not exist.";
 const RETRY_MESSAGE = "Something went wrong. Try again.";
 

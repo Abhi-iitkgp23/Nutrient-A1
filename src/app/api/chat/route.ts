@@ -19,6 +19,8 @@ import {
 } from "@/lib/store";
 import type { ChatResponse, Claim } from "@/lib/types";
 
+export const runtime = "nodejs";
+
 export const ANSWER_SCHEMA_NAME = "nutrition_answer";
 
 const VALIDATION_MESSAGE = "Enter a message.";

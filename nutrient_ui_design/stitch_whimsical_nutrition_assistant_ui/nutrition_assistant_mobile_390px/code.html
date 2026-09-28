@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, maximum-scale=1.0">
+  <title>Nutrition Assistant (Mobile 390px)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-wash: #FDE7EE;
+      --panel-conv: #FFF8F1;
+      --panel-sources: #FFF3C9;
+      --card-white: #FFFFFF;
+      --border-blush: #F7C5D4;
+      --text-cocoa: #5C3A45;
+      --text-dusty: #8D5A68;
+      --accent-yellow: #F6D56B;
+      --accent-blush: #F4A7BE;
+      --font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-wash);
+      color: var(--text-cocoa);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Mobile-specific smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #F4A7BE;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="bg-[#FDE7EE] p-0 min-h-screen">
+
+  <!-- Mobile Viewport Frame: exactly 390px width -->
+  <main class="w-[390px] min-h-screen bg-[#FFF8F1] border-x border-[#F7C5D4] flex flex-col shadow-2xl relative">
+    
+    <!-- Header Component -->
+    <header class="px-4 py-3.5 border-b-2 border-[#F7C5D4] bg-[#FFF8F1]/95 sticky top-0 z-20 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <!-- Strawberry Sticker -->
+        <span class="inline-flex shrink-0">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 7C14 7 8 12 7 19C6 26 13 32 18 34C23 32 30 26 29 19C28 12 22 7 18 7Z" fill="#F45876" stroke="#5C3A45" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M18 3V8M13 5C15 6.5 17 8 18 8C19 8 21 6.5 23 5M10 8C12 9 16 10 18 10C20 10 24 9 26 8" stroke="#7BAE6A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="13" cy="16" rx="1" ry="1.4" fill="#FFE59E"/>
+            <ellipse cx="18" cy="18" rx="1" ry="1.4" fill="#FFE59E"/>
+            <ellipse cx="23" cy="16" rx="1" ry="1.4" fill="#FFE59E"/>
+            <ellipse cx="15" cy="23" rx="1" ry="1.4" fill="#FFE59E"/>
+            <ellipse cx="21" cy="23" rx="1" ry="1.4" fill="#FFE59E"/>
+          </svg>
+        </span>
+        <div>
+          <h1 class="text-lg font-black tracking-tight text-[#5C3A45] leading-tight">
+            Nutrition assistant
+          </h1>
+          <p class="text-[11px] font-bold text-[#8D5A68]">Food, nutrition, and food safety.</p>
+        </div>
+      </div>
+
+      <span class="w-2.5 h-2.5 rounded-full bg-[#7BAE6A] ring-4 ring-[#7BAE6A]/20"></span>
+    </header>
+
+    <!-- Content Layout: Stacked Conversation on top, Composer at bottom of conversation, Sources Panel below -->
+    <div class="flex-1 flex flex-col">
+
+      <!-- Conversation Section (Warm Cream #FFF8F1) -->
+      <section class="flex flex-col bg-[#FFF8F1] border-b-2 border-[#F7C5D4]">
+        
+        <!-- MessageList -->
+        <div class="p-4 space-y-4">
+          
+          <!-- Empty State Line -->
+          <div class="flex items-center justify-center gap-2 py-2 px-3 rounded-2xl bg-[#FFF3C9]/50 border border-[#F6D56B]/60 mx-auto text-center">
+            <!-- Lemon Sticker -->
+            <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="12" cy="12" rx="10" ry="7" transform="rotate(-30 12 12)" fill="#F6D56B" stroke="#5C3A45" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4.5" fill="#FFF9DF" stroke="#5C3A45" stroke-width="1.2"/>
+              <path d="M12 7.5V16.5M7.5 12H16.5" stroke="#F6D56B" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span class="text-[11px] font-bold text-[#8D5A68]">Ask a question about food, nutrition, or food safety.</span>
+          </div>
+
+          <!-- UserBubble -->
+          <div class="flex justify-end">
+            <div class="max-w-[85%] rounded-[24px] rounded-br-[6px] bg-[#F4A7BE] text-[#5C3A45] px-4 py-3 font-bold text-sm shadow-sm border border-[#E593AC] leading-snug">
+              How long can leftover cooked rice stay in the refrigerator?
+            </div>
+          </div>
+
+          <!-- AssistantBubble (Selected) -->
+          <div class="flex justify-start">
+            <div class="relative max-w-[92%] rounded-[24px] rounded-bl-[6px] bg-white border-2 border-[#F6D56B] ring-2 ring-[#F6D56B]/40 p-4 text-[#5C3A45] shadow-sm">
+              
+              <!-- Whisk Sticker in Corner -->
+              <div class="absolute -top-3 -right-2 bg-[#FFF3C9] border-2 border-[#5C3A45] rounded-full p-1 shadow-sm flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 20L9 15" stroke="#5C3A45" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M9 15C9 15 11 9 16 6C18.5 4.5 20.5 5.5 20 8C19 13 13 15 9 15Z" fill="#F6D56B" fill-opacity="0.3" stroke="#5C3A45" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Answer Text: large comfortable reading size -->
+              <p class="text-base font-extrabold leading-relaxed text-[#5C3A45]">
+                Cooked rice keeps 3 to 5 days refrigerated in an airtight container.
+              </p>
+
+              <div class="mt-2.5 pt-2 border-t border-[#FDE7EE] flex items-center justify-between text-[10px] font-extrabold text-[#8D5A68]">
+                <span class="text-[#5C3A45] bg-[#FFF3C9] px-2 py-0.5 rounded-full border border-[#F6D56B]">Active selected bubble</span>
+                <span>2 claims below</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AssistantBubble 2 (Not Selected, with DeclineLabel) -->
+          <div class="flex justify-start">
+            <div class="relative max-w-[92%] rounded-[24px] rounded-bl-[6px] bg-white border-2 border-[#F7C5D4] p-4 text-[#5C3A45] shadow-sm">
+              
+              <!-- DeclineLabel (Small rounded blush chip) -->
+              <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FDE7EE] border border-[#F4A7BE] text-[10px] font-bold text-[#8D5A68] mb-2">
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="8" cy="8" r="7" stroke="#8D5A68" stroke-width="1.6"/>
+                  <path d="M5 8H11" stroke="#8D5A68" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Outside what this assistant can answer
+              </div>
+
+              <p class="text-sm font-bold leading-relaxed text-[#5C3A45]">
+                I can't give calorie targets, weight recommendations, or medical advice. A registered dietitian or a clinician is the right person to ask.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Composer Component: strictly placed at the bottom of the conversation, not under sources -->
+        <div class="p-3.5 bg-[#FFF8F1] border-t-2 border-[#F7C5D4]">
+          <form onsubmit="event.preventDefault();" class="space-y-1.5">
+            <div class="flex items-center bg-white rounded-[18px] border-2 border-[#F7C5D4] p-1.5 shadow-sm">
+              <textarea 
+                rows="1" 
+                placeholder="Ask about food, nutrition, or food safety" 
+                class="w-full resize-none border-none outline-none px-2 py-1 text-sm font-semibold text-[#5C3A45] placeholder-[#8D5A68]/60 bg-transparent leading-tight"
+              ></textarea>
+              
+              <!-- Send button: Butter yellow with cocoa text -->
+              <button 
+                type="submit" 
+                class="shrink-0 px-4 py-2 rounded-[18px] bg-[#F6D56B] text-[#5C3A45] font-extrabold text-xs shadow-sm border border-[#E5C255]"
+              >
+                Send
+              </button>
+            </div>
+            <div class="px-2">
+              <span class="text-[10px] font-bold text-[#8D5A68]">Enter a message.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Sources Panel: Stacked Below, Pale Butter #FFF3C9, Always Visible -->
+      <section class="bg-[#FFF3C9] p-4 flex flex-col flex-1 pb-8">
+        
+        <!-- Heading with Teacup Sticker -->
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#F6D56B]/60 mb-3">
+          <div class="flex items-center gap-2">
+            <!-- Teacup Sticker -->
+            <span class="p-1 bg-white rounded-lg border border-[#F6D56B] flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3C8 4.5 9 5 9 6M12 2C12 3.5 13 4 13 5M16 3C16 4.5 17 5 17 6" stroke="#8D5A68" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M5 8H19V14C19 17 16 19 12 19C8 19 5 17 5 14V8Z" fill="#FFFFFF" stroke="#5C3A45" stroke-width="1.8"/>
+                <path d="M19 10C20.5 10 21.5 11 21.5 12.5C21.5 14 20.5 15 19 15" stroke="#5C3A45" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M4 20H20" stroke="#5C3A45" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h2 class="text-base font-extrabold text-[#5C3A45]">Sources</h2>
+          </div>
+          <span class="text-[10px] font-extrabold text-[#8D5A68] bg-[#FFF8F1] px-2 py-0.5 rounded-full border border-[#F6D56B]">
+            Binds to selected
+          </span>
+        </div>
+
+        <!-- Claims Stack -->
+        <div class="space-y-3">
+          <!-- ClaimCard 1 -->
+          <div class="rounded-[20px] bg-white border-2 border-[#F7C5D4] p-3.5 shadow-sm space-y-2">
+            <span class="text-[10px] font-extrabold uppercase text-[#8D5A68]">Claim 1</span>
+            <p class="text-xs font-bold text-[#5C3A45] leading-snug">
+              Cooked rice keeps 3 to 5 days refrigerated.
+            </p>
+            <!-- SourceSlot -->
+            <div class="rounded-[14px] bg-[#FFF3C9] border border-[#F6D56B] px-3 py-1.5 flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-[#8D5A68] uppercase">Source</span>
+              <span class="text-xs font-extrabold text-[#5C3A45]">No source</span>
+            </div>
+          </div>
+
+          <!-- ClaimCard 2 -->
+          <div class="rounded-[20px] bg-white border-2 border-[#F7C5D4] p-3.5 shadow-sm space-y-2">
+            <span class="text-[10px] font-extrabold uppercase text-[#8D5A68]">Claim 2</span>
+            <p class="text-xs font-bold text-[#5C3A45] leading-snug">
+              Leftovers should be cooled quickly and kept in airtight storage within two hours.
+            </p>
+            <!-- SourceSlot -->
+            <div class="rounded-[14px] bg-[#FFF3C9] border border-[#F6D56B] px-3 py-1.5 flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-[#8D5A68] uppercase">Source</span>
+              <span class="text-xs font-extrabold text-[#5C3A45]">No source</span>
+            </div>
+          </div>
+
+          <!-- Alternate State Preview (Cookie sticker) -->
+          <div class="rounded-[20px] bg-[#FFF8F1] border-2 border-dashed border-[#F7C5D4] p-3 flex items-center gap-2.5 mt-2">
+            <!-- Heart-shaped Cookie Sticker -->
+            <span class="shrink-0 p-1 bg-[#FFF3C9] rounded-lg border border-[#F6D56B]">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#E6A670" stroke="#5C3A45" stroke-width="1.8"/>
+                <circle cx="8" cy="8" r="0.9" fill="#FDE7EE"/>
+                <circle cx="12" cy="11" r="1" fill="#F4A7BE"/>
+                <circle cx="16" cy="8" r="0.9" fill="#FFE59E"/>
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-extrabold text-[#5C3A45]">No claims in this answer</p>
+              <p class="text-[10px] text-[#8D5A68] font-semibold">Tapping the second bubble shows this</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- StatusLine Reference -->
+        <div class="mt-4 pt-3 border-t border-[#F6D56B]/50 text-[10px] font-semibold text-[#8D5A68] space-y-0.5">
+          <p>• "Loading conversation…"</p>
+          <p>• "That conversation could not be found."</p>
+          <p>• "This answer didn't match the expected format, so it wasn't shown."</p>
+          <p>• "Something went wrong. Try again."</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
